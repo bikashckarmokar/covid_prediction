@@ -38,6 +38,9 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run django integratin test
+        run: python manage.py runserver
+          
+      - name: Run django integratin test
         run: python manage.py test
 
       
