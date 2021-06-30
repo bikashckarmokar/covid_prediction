@@ -59,9 +59,10 @@ ROOT_URLCONF = 'covid_prediction.urls'
 
 TEMPLATES = [
     {
-        # 'BACKEND': 'django.template.backends.jinja2.Jinja2'
+        # 'BACKEND': 'django.template.backends.jinja2.Jinja2',
+        # 'DIRS': [os.path.join(BASE_DIR, '../covid_ui')],
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, '../covid_ui')],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -127,9 +128,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, '../covid_ui/build/static'),
-]
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, '../covid_ui/build/static'),
+# ]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

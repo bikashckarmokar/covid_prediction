@@ -6,7 +6,7 @@ from django.test import tag
 import requests
 
 
-SKIPT_TEST = True
+SKIP_TEST = True
 REASON = 'Quick Test'
 
 PREDICT_API_URL = 'http://127.0.0.1:8000/predict/'
@@ -71,7 +71,7 @@ class PredictApi(TestCase):
 
         assert results['corona'] == 1
 
-    # @unittest.skipIf(SKIPT_TEST, REASON)
+    # @unittest.skipIf(SKIP_TEST, REASON)
     def test_predict_skip_test(self):
         # python manage.py test predict.tests.PredictApi.test_predict_positive
 
@@ -99,10 +99,10 @@ class PredictApi(TestCase):
         assert results['corona'] == 1
 
 
-class HistoryApi(TestCase):
-    def test_get_history_data(self):
-        response = requests.get(PREDICT_API_URL+'history/')
-        content = response.content
-        print(content)
-
-        assert response.ok
+# class HistoryApi(TestCase):
+#     def test_get_history_data(self):
+#         response = requests.get(PREDICT_API_URL+'history/')
+#         content = response.content
+#         print(content)
+#
+#         assert response.ok

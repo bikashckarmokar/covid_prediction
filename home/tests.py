@@ -12,6 +12,6 @@ class HomeApi(TestCase):
     def test_welcome(self):
         # python manage.py test home.tests.HomeApi.test_welcome
 
-        response = requests.get(HOME_API_URL+'welcome/')
+        response = requests.get(HOME_API_URL)
         content = response.content
         assert content == b'"Welcome to covid prediction service"'
