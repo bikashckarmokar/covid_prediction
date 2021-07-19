@@ -26,7 +26,7 @@ jobs:
       - name: Install dependencies
         run: python -m pip install -r requirements.txt
 
-      - name: Run django integratin test
+      - name: Start django server and run integratin test
         run: |
           python manage.py runserver 127.0.0.1:8000
           sleep 20
