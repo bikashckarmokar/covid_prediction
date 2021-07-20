@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -39,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'predict.apps.PredictConfig',
     'rest_framework',
+    'corsheaders',
+    'home',
 ]
 
 MIDDLEWARE = [
@@ -49,17 +52,17 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'covid_prediction.urls'
 
 TEMPLATES = [
     {
-        # 'BACKEND': 'django.template.backends.jinja2.Jinja2'
-        'BACKEND': 'django.template.backends.django.DjangoTemplates'
-        ,
-        'DIRS': [BASE_DIR / 'templates']
-        ,
+        # 'BACKEND': 'django.template.backends.jinja2.Jinja2',
+        # 'DIRS': [os.path.join(BASE_DIR, '../covid_ui')],
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -71,6 +74,8 @@ TEMPLATES = [
         },
     },
 ]
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 WSGI_APPLICATION = 'covid_prediction.wsgi.application'
 
@@ -123,6 +128,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, '../covid_ui/build/static'),
+# ]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
